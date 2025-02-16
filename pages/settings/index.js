@@ -57,7 +57,7 @@ export default function Settings() {
               <div className="mt-2 flex items-center gap-x-3">
                 <div className="w-10 h-10">
                   <Image
-                    class="h-full w-full rounded-full object-contain object-center"
+                    className="h-full w-full rounded-full object-contain object-center"
                     // src={session.user.image}
                     // alt={session.user.email}
                     width={34}

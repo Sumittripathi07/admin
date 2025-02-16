@@ -1,7 +1,7 @@
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import img1 from "@/public/product.png";
+// import img1 from "@/public/product.png";
 
 // Utility function to format price with a comma for thousands
 const formatPrice = (price) => {
@@ -65,8 +65,8 @@ export default function Product() {
                   className="w-6 h-6"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
@@ -84,7 +84,26 @@ export default function Product() {
         ) : (
           <>
             <table className="min-w-full bg-white border divide-y-2 divide-gray-200 rounded text-md">
-              <thead>{/* Table headers here */}</thead>
+              <thead>
+                <tr>
+                  <th className="px-4 py-2 text-left text-gray-900">#</th>
+                  <th className="px-4 py-2 text-left text-gray-900">Image</th>
+                  <th className="px-4 py-2 text-left text-gray-900">Name</th>
+                  <th className="px-4 py-2 text-left text-gray-900">Company</th>
+                  <th className="px-4 py-2 text-left text-gray-900">Price</th>
+                  <th className="px-4 py-2 text-left text-gray-900">Colors</th>
+                  <th className="px-4 py-2 text-left text-gray-900">
+                    Category
+                  </th>
+                  <th className="px-4 py-2 text-left text-gray-900">
+                    Featured
+                  </th>
+                  <th className="px-4 py-2 text-left text-gray-900">
+                    Shipping
+                  </th>
+                  <th className="px-4 py-2 text-left text-gray-900">Actions</th>
+                </tr>
+              </thead>
               {productsToDisplay.map((product, index) => (
                 <tbody className="divide-y divide-gray-200" key={product._id}>
                   <tr>
@@ -92,20 +111,34 @@ export default function Product() {
                       {index + 1}
                     </td>
                     <td className="flex items-center gap-1 px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
-                      <div class="h-10 w-10">
+                      <div className="w-10 h-10">
                         <img
-                          class="h-full w-full rounded-full object-cover object-center bg-gray-200"
-                          src={product.images?.[0] || img1}
-                          alt={product.title}
+                          className="object-cover object-center w-full h-full bg-gray-200 rounded-full"
+                          src={product.image}
+                          alt={product.name}
                         />
                       </div>
-                      {product.title}
                     </td>
-                    <td className="max-w-md px-4 py-2 text-gray-700 truncate whitespace-nowrap">
-                      {product.description}
+                    <td className="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
+                      {product.name}
+                    </td>
+                    <td className="px-4 py-2 text-gray-700 whitespace-nowrap">
+                      {product.company}
                     </td>
                     <td className="px-4 py-2 text-gray-700 whitespace-nowrap">
                       ₹. {formatPrice(product.price)}
+                    </td>
+                    <td className="px-4 py-2 text-gray-700 whitespace-nowrap">
+                      {product.colors.join(", ")}
+                    </td>
+                    <td className="px-4 py-2 text-gray-700 whitespace-nowrap">
+                      {product.category}
+                    </td>
+                    <td className="px-4 py-2 text-gray-700 whitespace-nowrap">
+                      {product.featured ? "Yes" : "No"}
+                    </td>
+                    <td className="px-4 py-2 text-gray-700 whitespace-nowrap">
+                      {product.shipping ? "Yes" : "No"}
                     </td>
                     <td className="flex gap-4 px-4 py-2 whitespace-nowrap">
                       <Link
