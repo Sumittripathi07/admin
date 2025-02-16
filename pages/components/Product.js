@@ -16,6 +16,7 @@ export default function Product({
   category: selectedCategory,
   featured: existingFeatured,
   shipping: existingShipping,
+  stock: existingStock,
 }) {
   const [name, setName] = useState(existingName || "");
   const [company, setCompany] = useState(existingCompany || "");
@@ -26,6 +27,7 @@ export default function Product({
   const [category, setCategory] = useState(selectedCategory || "");
   const [featured, setFeatured] = useState(existingFeatured || false);
   const [shipping, setShipping] = useState(existingShipping || false);
+  const [stock, setStock] = useState(existingStock || 0);
   const router = useRouter();
   const [redirect, setRedirect] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -64,8 +66,8 @@ export default function Product({
       category,
       featured,
       shipping,
+      stock,
     };
-    console.log("UI", data);
 
     if (_id) {
       await axios.put("/api/products", { ...data, _id });
@@ -90,8 +92,6 @@ export default function Product({
       // Use the axios.post method and push the promise to the queue
       uploadImagesQueue.push(
         axios.post("/api/upload", data).then((res) => {
-          console.log("img", res.data);
-
           setImage(res.data.links[0]);
         })
       );
@@ -271,6 +271,23 @@ export default function Product({
               required
               value={price}
               onChange={(ev) => setPrice(ev.target.value)}
+            />
+          </div>
+        </div>
+
+        {/* Stock input */}
+        <div className="grid items-center grid-cols-2 my-4">
+          <label className="block col-span-1 mb-3 text-lg font-medium text-gray-700">
+            Stock
+          </label>
+          <div className="col-span-2">
+            <input
+              type="number"
+              className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500"
+              placeholder="Stock"
+              required
+              value={stock}
+              onChange={(ev) => setStock(ev.target.value)}
             />
           </div>
         </div>

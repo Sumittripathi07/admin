@@ -18,9 +18,8 @@ export default async function handle(req, res) {
       category,
       featured,
       shipping,
+      stock,
     } = req.body;
-
-    console.log(req.body);
 
     const productDoc = await Product.create({
       id,
@@ -33,6 +32,7 @@ export default async function handle(req, res) {
       category,
       featured,
       shipping,
+      stock,
     });
 
     res.json(productDoc);
@@ -58,6 +58,7 @@ export default async function handle(req, res) {
       category,
       featured,
       shipping,
+      stock,
       _id,
     } = req.body;
 
@@ -74,6 +75,7 @@ export default async function handle(req, res) {
         category,
         featured,
         shipping,
+        stock,
       }
     );
     res.json(true);

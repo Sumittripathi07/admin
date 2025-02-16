@@ -11,6 +11,7 @@ const ProductSchema = new Schema({
   category: String,
   featured: Boolean,
   shipping: Boolean,
+  stock: Number,
 });
 
 export const Product = models.Product || model("Product", ProductSchema);

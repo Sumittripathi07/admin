@@ -101,6 +101,7 @@ export default function Product() {
                   <th className="px-4 py-2 text-left text-gray-900">
                     Shipping
                   </th>
+                  <th className="px-4 py-2 text-left text-gray-900">Stock</th>
                   <th className="px-4 py-2 text-left text-gray-900">Actions</th>
                 </tr>
               </thead>
@@ -139,6 +140,9 @@ export default function Product() {
                     </td>
                     <td className="px-4 py-2 text-gray-700 whitespace-nowrap">
                       {product.shipping ? "Yes" : "No"}
+                    </td>
+                    <td className="px-4 py-2 text-gray-700 whitespace-nowrap">
+                      {product.stock}
                     </td>
                     <td className="flex gap-4 px-4 py-2 whitespace-nowrap">
                       <Link
