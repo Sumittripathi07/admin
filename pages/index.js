@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import Dashboard from "./components/Dashboard";
 
 const formatPrice = (price) => {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -245,6 +246,7 @@ export default function Home() {
             </article>
           </div>
         </div> */}
+        <Dashboard />
       </main>
     </>
   );
