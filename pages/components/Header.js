@@ -83,6 +83,14 @@ export default function Header() {
                       Orders
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      className={pathname === "/users-query" ? active : inActive}
+                      href="/users-query"
+                    >
+                      User Queries
+                    </Link>
+                  </li>
 
                   {/* <li>
                     <Link
@@ -194,6 +202,15 @@ export default function Header() {
                           href="/orders"
                         >
                           Orders
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          onClick={toggleMobileNav}
+                          className={pathname === "/users-query" ? active : inActive}
+                          href="/users-query"
+                        >
+                          User Queries
                         </Link>
                       </li>
                       {/* <li>
